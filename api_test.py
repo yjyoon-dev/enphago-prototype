@@ -15,6 +15,7 @@ soup = BeautifulSoup(res.content, 'html.parser')
 check = soup.find('total').get_text()
 if check=='0':
     print('존재하지 않는 단어입니다')
+    exit(0)
 
 wordPos = soup.find('pos').get_text().strip() # 단어의 품사
 wordType = soup.find('type').get_text().strip() # 단어의 어휘
