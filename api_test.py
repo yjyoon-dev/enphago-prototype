@@ -4,14 +4,14 @@ from bs4 import BeautifulSoup
 openApiKey = "6BA64977BF783DF87C9AAD7B59F834D9"
 params = "&type_search=search&q="
 
-word = input("검색할 단어를 입력하시오 : ").strip()
+word = input("단어를 입력하시오 : ").strip()
 
 openUrl = "https://stdict.korean.go.kr/api/search.do?certkey_no=1945&key=" + openApiKey + params + word
 
 res = requests.get(openUrl)
 soup = BeautifulSoup(res.content, 'html.parser')
 
-# 단어 유효성 체크
+# 단어 존재 유무 체크
 check = soup.find('total').get_text()
 if check=='0':
     print('존재하지 않는 단어입니다')
